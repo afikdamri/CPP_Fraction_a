@@ -17,10 +17,41 @@ namespace ariel
     {
         return denominator;
     }
+
     Fraction operator+(const Fraction &f1, const Fraction &f2)
     {
         int num = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
         int den = f1.denominator * f2.denominator;
+        int gcd = 1;
+        for (int i = 1; i <= std::min(num, den); ++i)
+        {
+            if (num % i == 0 && den % i == 0)
+            {
+                gcd = i;
+            }
+        }
+        return Fraction(num / gcd, den / gcd);
+    }
+
+    Fraction operator+(const Fraction &f, const double &d)
+    {
+        int num = f.getNumerator() + (d * f.getDenominator());
+        int den = f.getDenominator();
+        int gcd = 1;
+        for (int i = 1; i <= std::min(num, den); ++i)
+        {
+            if (num % i == 0 && den % i == 0)
+            {
+                gcd = i;
+            }
+        }
+        return Fraction(num / gcd, den / gcd);
+    }
+
+    Fraction operator+(const double &d, const Fraction &f)
+    {
+        int num = f.getNumerator() + (d * f.getDenominator());
+        int den = f.getDenominator();
         int gcd = 1;
         for (int i = 1; i <= std::min(num, den); ++i)
         {
@@ -45,6 +76,18 @@ namespace ariel
             }
         }
         return Fraction(num / gcd, den / gcd);
+    }
+
+    Fraction operator-(const Fraction &f, const double &d)
+    {
+        double numerator = f.numerator - (f.denominator * d);
+        return Fraction(numerator, f.denominator);
+    }
+
+    Fraction operator-(const double &d, const Fraction &f)
+    {
+        double numerator = f.numerator - (f.denominator * d);
+        return Fraction(numerator, f.denominator);
     }
 
     Fraction operator/(const Fraction &f1, const Fraction &f2)
@@ -130,21 +173,6 @@ namespace ariel
     Fraction operator*(const double &d, const Fraction &f)
     {
         return Fraction(d) * f;
-    }
-
-    Fraction operator+(const Fraction &f, const double &d)
-    {
-        int num = f.getNumerator() + (d * f.getDenominator());
-        int den = f.getDenominator();
-        int gcd = 1;
-        for (int i = 1; i <= std::min(num, den); ++i)
-        {
-            if (num % i == 0 && den % i == 0)
-            {
-                gcd = i;
-            }
-        }
-        return Fraction(num / gcd, den / gcd);
     }
 
     Fraction Fraction::operator--(int)

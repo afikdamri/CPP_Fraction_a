@@ -34,9 +34,15 @@ namespace ariel
 
         friend Fraction operator+(const Fraction &f1, const Fraction &f2);
         friend Fraction operator+(const Fraction &f, const double &d);
+        friend Fraction operator+(const double &d, const Fraction &f);
 
         friend Fraction operator-(const Fraction &f1, const Fraction &f2);
+        friend Fraction operator-(const Fraction &f, const double &d);
+        friend Fraction operator-(const double &d, const Fraction &f);
+
         friend Fraction operator/(const Fraction &f1, const Fraction &f2);
+        /*friend Fraction operator/(const Fraction &f, const double &d);
+        friend Fraction operator/(const double &d, const Fraction &f);*/
 
         friend Fraction operator*(const Fraction &f1, const Fraction &f2);
         friend Fraction operator*(const double &d, const Fraction &f);

@@ -13,7 +13,8 @@ namespace ariel
             throw std::invalid_argument("Denominator cannot be zero!");
         }
     }
-
+}
+/*
     int Fraction::getNumerator() const
     {
         return numerator;
@@ -225,3 +226,4 @@ namespace ariel
         return (num1 == num2) && (den1 == den2);
     }
 }
+*/

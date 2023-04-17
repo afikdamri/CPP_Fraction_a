@@ -26,50 +26,55 @@ namespace ariel
         }
 
     public:
-        Fraction(int num, int den = 1);
-        Fraction();
-        int getNumerator() const;
-        int getDenominator() const;
-        friend ostream &operator<<(std::ostream &os, const Fraction &f);
+        Fraction(int num, int den);
+        Fraction(){numerator = 0; denominator = 1;}
 
-        friend Fraction operator+(const Fraction &f1, const Fraction &f2);
-        friend Fraction operator+(const Fraction &f, const float &d);
-        friend Fraction operator+(const float &d, const Fraction &f);
+        int getNumerator() const{return -1;};
+        int getDenominator() const{return -1;};
 
-        friend Fraction operator-(const Fraction &f1, const Fraction &f2);
-        friend Fraction operator-(const Fraction &f, const float &d);
-        friend Fraction operator-(const float &d, const Fraction &f);
+        friend ostream &operator<<(std::ostream &os, const Fraction &f){
+            os << f.numerator << "/" << f.denominator;
+            return os;
+        };
 
-        friend Fraction operator/(const Fraction &f1, const Fraction &f2);
-        friend Fraction operator/(const Fraction &f, const float &d);
-        friend Fraction operator/(const float &d, const Fraction &f);
+        friend Fraction operator+(const Fraction &f1, const Fraction &f2){return Fraction(1,1);};
+        friend Fraction operator+(const Fraction &f, const float &d){return Fraction(1,1);};
+        friend Fraction operator+(const float &d, const Fraction &f){return Fraction(1,1);};
 
-        friend Fraction operator*(const Fraction &f1, const Fraction &f2);
-        friend Fraction operator*(const Fraction &f, const float &d);
-        friend Fraction operator*(const float &d, const Fraction &f);
+        friend Fraction operator-(const Fraction &f1, const Fraction &f2){return Fraction(1,1);};
+        friend Fraction operator-(const Fraction &f, const float &d){return Fraction(1,1);};
+        friend Fraction operator-(const float &d, const Fraction &f){return Fraction(1,1);};
 
-        friend bool operator<(const Fraction &f1, const Fraction &f2);
-        friend bool operator<(const Fraction &f, const float &d);
-        friend bool operator<(const float &d, const Fraction &f);
+        friend Fraction operator/(const Fraction &f1, const Fraction &f2){return Fraction(1,1);};
+        friend Fraction operator/(const Fraction &f, const float &d){return Fraction(1,1);};
+        friend Fraction operator/(const float &d, const Fraction &f){return Fraction(1,1);};
 
-        friend bool operator>(const Fraction &f1, const Fraction &f2);
-        friend bool operator>(const Fraction &f1, const float &d);
-        friend bool operator>(const float &d, const Fraction &f);
+        friend Fraction operator*(const Fraction &f1, const Fraction &f2){return Fraction(1,1);};
+        friend Fraction operator*(const Fraction &f, const float &d){return Fraction(1,1);};
+        friend Fraction operator*(const float &d, const Fraction &f){return Fraction(1,1);};
 
-        friend bool operator>=(const Fraction &f1, const Fraction &f2);
-        friend bool operator>=(const Fraction &f1, const float &d);
-        friend bool operator>=(const float &d, const Fraction &f);
+        friend bool operator<(const Fraction &f1, const Fraction &f2){return false;};
+        friend bool operator<(const Fraction &f, const float &d){return false;};
+        friend bool operator<(const float &d, const Fraction &f){return false;};
 
-        friend bool operator<=(const Fraction &f1, const Fraction &f2);
-        friend bool operator<=(const Fraction &f1, const float &d);
-        friend bool operator<=(const float &d, const Fraction &f);
+        friend bool operator>(const Fraction &f1, const Fraction &f2){return false;};
+        friend bool operator>(const Fraction &f1, const float &d){return false;};
+        friend bool operator>(const float &d, const Fraction &f){return false;};
 
-        friend bool operator==(const Fraction &f1, const Fraction &f2);
+        friend bool operator>=(const Fraction &f1, const Fraction &f2){return false;};
+        friend bool operator>=(const Fraction &f1, const float &d){return false;};
+        friend bool operator>=(const float &d, const Fraction &f){return false;};
 
-        Fraction &operator++();
-        Fraction operator++(int);
+        friend bool operator<=(const Fraction &f1, const Fraction &f2){return false;};
+        friend bool operator<=(const Fraction &f1, const float &d){return false;};
+        friend bool operator<=(const float &d, const Fraction &f){return false;};
 
-        Fraction &operator--();
-        Fraction operator--(int);
+        friend bool operator==(const Fraction &f1, const Fraction &f2){return false;};
+
+        Fraction &operator++(){return *this;};
+        Fraction operator++(int){return Fraction(1,1);};
+
+        Fraction &operator--(){return *this;};
+        Fraction operator--(int){return Fraction(1,1);};
     };
 }

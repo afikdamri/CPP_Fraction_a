@@ -82,7 +82,7 @@ TEST_CASE("Test 7: Comparing two Fractions for equality")
 
     CHECK(f1 == f1);
     CHECK(f2 == f2);
-    CHECK(f1 != f2);
+    CHECK((f1 == f2) == false);
 }
 
 TEST_CASE("Test 8: Comparing two Fractions with operators")
@@ -204,4 +204,107 @@ TEST_CASE("Test 15: Simplifying Fractions")
     CHECK(f1 == f4);
     CHECK(f2 == f5);
     CHECK(f3 == f6);
+}
+
+TEST_CASE("Test 16: Dividing by zero")
+{
+    Fraction f1(1, 2);
+    Fraction f2(0, 1);
+
+    CHECK_THROWS(f1 / f2);
+    CHECK((f2 / f1) == f2);
+}
+
+TEST_CASE("Test 17: Assigning one Fraction to another")
+{
+    Fraction f1(1, 2);
+    Fraction f2(-3, 4);
+    Fraction f3;
+
+    f3 = f1;
+    CHECK(f3 == f1);
+
+    f3 = f2;
+    CHECK(f3 == f2);
+}
+
+TEST_CASE("Test 18: Dividing a Fraction by an integer")
+{
+    Fraction f1(5, 8);
+    Fraction f2(12, -5);
+
+    CHECK((f1 / 2) == Fraction(5, 16));
+    CHECK((f2 / 3) == Fraction(-4, 5));
+}
+
+TEST_CASE("Test 19: Test Fraction + float")
+{
+    Fraction f1(1, 2);
+    float f2 = 1.5;
+    Fraction result = f1 + f2;
+    Fraction expected(5, 2);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 20: Test float + Fraction")
+{
+    Fraction f1(1, 2);
+    float f2 = 1.5;
+    Fraction result = f2 + f1;
+    Fraction expected(5, 2);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 21: Test Fraction - float")
+{
+    Fraction f1(3, 4);
+    float f2 = 0.25;
+    Fraction result = f1 - f2;
+    Fraction expected(1, 2);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 22: Test float - Fraction")
+{
+    Fraction f1(3, 4);
+    float f2 = 0.25;
+    Fraction result = f2 - f1;
+    Fraction expected(-1, 4);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 23: Test Fraction * float")
+{
+    Fraction f1(2, 3);
+    float f2 = 1.5;
+    Fraction result = f1 * f2;
+    Fraction expected(1, 1);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 24: Test float * Fraction")
+{
+    Fraction f1(2, 3);
+    float f2 = 1.5;
+    Fraction result = f2 * f1;
+    Fraction expected(1, 1);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 25: Test Fraction / float")
+{
+    Fraction f1(1, 2);
+    float f2 = 0.25;
+    Fraction result = f1 / f2;
+    Fraction expected(2, 1);
+    CHECK(result == expected);
+}
+
+TEST_CASE("Test 26: Test float / Fraction")
+{
+    Fraction f1(1, 2);
+    float f2 = 0.25;
+    Fraction result = f2 / f1;
+    Fraction expected(1, 2);
+    CHECK(result == expected);
 }
